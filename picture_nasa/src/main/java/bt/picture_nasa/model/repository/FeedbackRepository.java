@@ -35,7 +35,7 @@ public class FeedbackRepository implements IFeedbackRepository {
 
         List<Feedback> list = new ArrayList<>();
         // select * from Person (object)
-        String query = "select f from Feedback as f order by creationDate desc";
+        String query = "select f from Feedback as f where f.creationDate = current_date() order by f.creationDate desc";
         // sử dụng các phương thức get/set của đối tượng 1 cách tự động
         TypedQuery<Feedback> typedQuery = entityManager.createQuery(query,Feedback.class);
         list= typedQuery.getResultList();
